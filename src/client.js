@@ -15,16 +15,17 @@ import 'stylesheets/global'
 
 const initialState = window.__INITIAL_STATE__
 
+debugger
 const reducer = combineReducers({
   ...reducers,
-  routing: routerReducer,
-  initialState
+  routing: routerReducer
 })
 
-const store = createStore(reducer, compose(
+const store = createStore(reducer, window.__INITIAL_STATE__, compose(
   applyMiddleware(thunk, promiseMiddleware),
   DevTools.instrument()
 ))
+
 const history = syncHistoryWithStore(browserHistory, store)
 
 const Root = () =>

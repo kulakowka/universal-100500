@@ -23,10 +23,13 @@ class Index extends Component {
     this.fetchData = this.fetchData.bind(this)
   }
 
-  state = { count: 500 }
-
   componentDidMount() {
-    this.props.actions.fetchList()
+    console.log('debugger');
+    debugger
+
+    if (!this.props.items.length) {
+      this.props.actions.fetchList()
+    }
   }
 
   changeHandler(e) {
@@ -39,7 +42,6 @@ class Index extends Component {
 
   render() {
     const { items } = this.props
-    const { count } = this.state
 
     return (
       <div className={css.root}>
@@ -48,9 +50,6 @@ class Index extends Component {
             title="hello, World!"
           />
         }
-        <span>Select api count digit:</span>
-        <input value={count} onChange={ this.changeHandler } type="text"/>
-        <button onClick={ this.fetchData }>fetch!</button>
         { items &&
           this.props.items.map( item =>
             <div key={item.id}>

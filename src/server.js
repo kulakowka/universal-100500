@@ -34,7 +34,7 @@ const getMarkup = (renderProps, initialState) => {
   const component = renderToString(<App />)
   const head = Helmet.rewind()
   console.log('head =', head.title.toString());
-  return jade.compileFile('src/views/index.jade')({markup: component, renderProps, manifest, state: initialState})
+  return jade.compileFile('src/views/index.jade')({markup: component, renderProps, manifest, state: initialState, ...head})
 }
 
 

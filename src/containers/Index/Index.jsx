@@ -24,8 +24,6 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    console.log('debugger');
-    debugger
 
     if (!this.props.items.length) {
       this.props.actions.fetchList()

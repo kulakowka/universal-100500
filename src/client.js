@@ -13,9 +13,6 @@ import promiseMiddleware from 'utils/middleware/promiseMiddleware'
 
 import 'stylesheets/global'
 
-const initialState = window.__INITIAL_STATE__
-
-debugger
 const reducer = combineReducers({
   ...reducers,
   routing: routerReducer
@@ -25,6 +22,8 @@ const store = createStore(reducer, window.__INITIAL_STATE__, compose(
   applyMiddleware(thunk, promiseMiddleware),
   DevTools.instrument()
 ))
+
+delete window.__INITIAL_STATE__
 
 const history = syncHistoryWithStore(browserHistory, store)
 

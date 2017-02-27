@@ -1,0 +1,24 @@
+$local-footer-height: 200px
+
+.root
+  margin: 0
+  padding: 0
+  height: 100%
+
+.content
+  padding: 40px 20px 0
+
+.container
+  margin-bottom: -($local-footer-height)
+  min-height: 100%
+
+  &::after
+    content: ''
+    display: block
+
+.footer, .container:after
+  height: $local-footer-height
+
+.footer
+  position: relative
+  z-index: 1

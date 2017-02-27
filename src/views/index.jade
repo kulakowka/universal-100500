@@ -1,0 +1,9 @@
+doctype html
+html(lang="ru")
+  head
+    script(src!=manifest['public/app.js'] defer)
+    link(rel="stylesheet" href!=manifest['public/app.css'])
+    script.
+      window.__INITIAL_STATE__=!{JSON.stringify(state)}
+  body
+    #container!= markup

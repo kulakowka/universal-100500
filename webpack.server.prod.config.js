@@ -63,6 +63,18 @@ module.exports = {
             }
           ]
         })
+      },
+      {
+        test: /.jpg/,
+        use: [
+          {
+            loader: 'file',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: 'public/'
+            }
+          }
+        ]
       }
     ]
   },
@@ -78,7 +90,8 @@ module.exports = {
       fonts: path.resolve(__dirname, 'src/static/fonts'),
       uikit: path.resolve(__dirname, 'src/ui-kit'),
       reducers: path.resolve(__dirname, 'src/reducers'),
-      utils: path.resolve(__dirname, 'src/utils')
+      utils: path.resolve(__dirname, 'src/utils'),
+      images: path.resolve(__dirname, 'src/static/images')
     }
   },
 

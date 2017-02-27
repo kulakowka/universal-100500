@@ -48,7 +48,7 @@ app.use( (req, res) => {
     if (!renderProps) { return res.status(404).send('Not Found') }
 
     fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
-      .then(() => res.end( getMarkup(renderProps, store.getState()) ))
+      .then(() => res.send( getMarkup(renderProps, store.getState()) ))
 
     // res.status(200).send()
   })

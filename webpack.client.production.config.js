@@ -1,6 +1,7 @@
 const commonConfig = require('./webpack.common.config')
 
 const webpack = require('webpack')
+const ManifestPlugin = require('webpack-manifest-plugin')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -38,14 +39,11 @@ module.exports = {
 
   plugins: [
     new ExtractTextPlugin('[name].[chunkhash].css'),
+    new ManifestPlugin(),
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __SERVER__: false,
       __DEV__: true
     })
-  ],
-
-  devtool: commonConfig.devtool,
-
-  devserver: commonConfig.devServer
+  ]
 }

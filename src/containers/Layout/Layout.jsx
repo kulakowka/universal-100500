@@ -27,7 +27,7 @@ export default class Layout extends Component {
         <div className={css.footer}>
           <Footer />
         </div>
-        <DevTools />
+        { global.__DEV__ && <DevTools />}
       </div>
     )
   }

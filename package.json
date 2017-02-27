@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run clean:client && ./node_modules/.bin/webpack-dev-server --config ./webpack.client.dev.config.js",
-    "build:client": "yarn run clean:client && ./node_modules/.bin/webpack --config ./webpack.client.dev.config.js",
+    "build:client": "yarn run clean:client && ./node_modules/.bin/webpack --config ./webpack.client.production.config.js",
     "build:server": "./node_modules/.bin/webpack --config ./webpack.server.prod.config.js",
     "start:server": "yarn run \"build:server\" && node ./server/",
     "clean:client": "rm -rf ./dist"
@@ -25,6 +25,7 @@
     "extract-text-webpack-plugin": "beta",
     "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.28.0",
+    "ignore-loader": "^0.1.2",
     "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.5.0",
     "pug": "^2.0.0-beta11",

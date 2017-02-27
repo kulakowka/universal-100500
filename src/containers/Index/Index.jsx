@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as indexActions from 'actions/indexActions'
 
+import testImage from 'images/1.jpg'
+
 class Index extends Component {
   static propTypes = {
     actions: PropTypes.object,
@@ -24,7 +26,6 @@ class Index extends Component {
   }
 
   componentDidMount() {
-
     if (!this.props.items.length) {
       this.props.actions.fetchList()
     }
@@ -48,6 +49,7 @@ class Index extends Component {
             title="hello, World!"
           />
         }
+        <img width="100" src={testImage} />
         { items &&
           this.props.items.map( item =>
             <div key={item.id}>

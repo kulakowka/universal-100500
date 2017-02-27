@@ -18,10 +18,9 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
-const store = createStore(reducer, window.__INITIAL_STATE__, compose(
-  applyMiddleware(thunk, promiseMiddleware),
-  DevTools.instrument()
-))
+const enchanters = (applyMiddleware(thunk, promiseMiddleware), global.__DEV__ && DevTools.instrument())
+
+const store = createStore(reducer, window.__INITIAL_STATE__, compose(enchanters))
 
 delete window.__INITIAL_STATE__
 

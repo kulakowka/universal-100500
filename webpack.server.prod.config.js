@@ -1,10 +1,10 @@
-const webpack = require('webpack')
 const fs = require('fs')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const commonConfig = require('./webpack.common.config')
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
+  context: commonConfig.context,
 
   target: 'node',
 
@@ -18,64 +18,10 @@ module.exports = {
   // Правила обработки
   module: {
     rules: [
-      {
-        test: /.jsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel',
-            options: {
-              presets: ['react', 'es2015', 'stage-2']
-            }
-          }
-        ]
-      },
-      {
-        test: /.jade$/,
-        use: [
-          {
-            loader: 'pug',
-            options: {
-              pretty: true
-            }
-          }
-        ]
-      },
-      {
-        test: /.sass/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style',
-          use: [
-            {
-              loader: 'css',
-              options: {
-                importLoaders: 1,
-                modules: true,
-                localIdentName: '[name]-[local]-[hash:base64:6]'
-              }
-            },
-            {
-              loader:'sass',
-              options: {
-                indentedSyntax: true,
-                includePaths: path.resolve(__dirname, 'src')
-              }
-            }
-          ]
-        })
-      },
-      {
-        test: /.jpg/,
-        use: [
-          {
-            loader: 'file',
-            options: {
-              name: '[name].[hash].[ext]',
-              outputPath: 'public/'
-            }
-          }
-        ]
-      }
+      commonConfig.loaders.jsx,
+      commonConfig.loaders.jade,
+      commonConfig.loaders.sass,
+      commonConfig.loaders.images
     ]
   },
 

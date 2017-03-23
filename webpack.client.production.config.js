@@ -2,7 +2,7 @@ const commonConfig = require('./webpack.common.config')
 
 const webpack = require('webpack')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const path = require('path')
+const { resolve } = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'dist'),
     publicPath: '/public/',
     filename: '[name].[chunkhash].js'
   },
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   resolve: {
-    modules: ['node_modules', path.resolve( __dirname, 'src' )],
+    modules: ['node_modules', resolve(__dirname, 'src')],
     extensions: commonConfig.extensions,
     alias: commonConfig.alias
   },

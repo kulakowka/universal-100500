@@ -1,4 +1,4 @@
-const path = require('path')
+const { resolve } = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -40,10 +40,10 @@ module.exports = {
             }
           },
           {
-            loader:'sass',
+            loader: 'sass',
             options: {
               indentedSyntax: true,
-              includePaths: path.resolve(__dirname, 'src')
+              includePaths: resolve(__dirname, 'src')
             }
           }
         ]
@@ -91,28 +91,28 @@ module.exports = {
   },
 
   alias: {
-    routes: path.resolve(__dirname, 'src/routes'),
-    components: path.resolve(__dirname, 'src/components'),
-    containers: path.resolve(__dirname, 'src/containers'),
-    stylesheets: path.resolve(__dirname, 'src/stylesheets'),
-    fonts: path.resolve(__dirname, 'src/static/fonts'),
-    uikit: path.resolve(__dirname, 'src/ui-kit'),
-    reducers: path.resolve(__dirname, 'src/reducers/'),
-    actions: path.resolve(__dirname, 'src/actions'),
-    utils: path.resolve(__dirname, 'src/utils'),
-    images: path.resolve(__dirname, 'src/static/images')
+    routes: resolve(__dirname, 'src/routes'),
+    components: resolve(__dirname, 'src/components'),
+    containers: resolve(__dirname, 'src/containers'),
+    stylesheets: resolve(__dirname, 'src/stylesheets'),
+    fonts: resolve(__dirname, 'src/static/fonts'),
+    uikit: resolve(__dirname, 'src/ui-kit'),
+    reducers: resolve(__dirname, 'src/reducers/'),
+    actions: resolve(__dirname, 'src/actions'),
+    utils: resolve(__dirname, 'src/utils'),
+    images: resolve(__dirname, 'src/static/images')
   },
 
   extensions: ['.jsx', '.js', '.sass'],
 
-  context: path.resolve(__dirname, 'src'),
+  context: resolve(__dirname, 'src'),
 
   resolveLoader: { moduleExtensions: ['-loader'] },
 
   devtool: 'source-map',
 
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: resolve(__dirname, 'dist'),
     port: 3000,
     historyApiFallback: true
   }
